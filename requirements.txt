@@ -1,0 +1,16 @@
+# Wersje odczytane z dzialajacego srodowiska projektu (pip freeze), nie z pamieci.
+# Python 3.14.5, Windows.
+
+pandas==3.0.6
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+statsmodels==0.15.0
+matplotlib==3.11.2
+
+# Zaleznosc czasu wykonania: zadna linia kodu jej nie importuje, ale bez niej
+# notebook nie ma jadra, w ktorym moglby sie uruchomic. Nie usuwac jako zbednej.
+ipykernel==7.4.0
+
+# Testy gwarancji metodologicznych.
+pytest==9.1.1

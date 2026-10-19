@@ -1,0 +1,25 @@
+# Srodowisko wirtualne projektu
+venv/
+.venv/
+
+# Artefakty Pythona
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Notebooki
+.ipynb_checkpoints/
+
+# Dokumenty z danymi osobowymi - nie trafiaja do publicznego repozytorium
+docs/
+*.docx
+
+# Srodowisko lokalne
+.env
+
+# Pliki systemowe i edytorow
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.obsidian/

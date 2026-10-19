@@ -1,0 +1,24 @@
+Zmienna,SMD przed,SMD po,Redukcja (%)
+poiCount,1.137,0.0145,98.7243
+clinicDistance,0.9822,0.0296,96.9913
+collegeDistance,0.9743,0.0692,92.8934
+centreDistance,0.9165,0.0711,92.2447
+schoolDistance,0.811,0.0311,96.171
+buildYear,0.7877,0.0028,99.6383
+postOfficeDistance,0.7506,0.0213,97.1566
+pharmacyDistance,0.7398,0.0019,99.7494
+restaurantDistance,0.6589,0.0161,97.563
+type_tenement,0.5788,0.0341,94.1076
+kindergartenDistance,0.4206,0.0232,94.4804
+hasStorageRoom,0.414,0.0071,98.2908
+hasSecurity,0.3214,0.0736,77.1108
+floorCount,0.3169,0.0106,96.6439
+hasBalcony,0.2869,0.0676,76.4504
+floor,0.2806,0.0609,78.3169
+hasParkingSpace,0.273,0.0388,85.7876
+buildingMaterial_concreteSlab,0.2064,0.0178,91.3546
+ownership_cooperative,0.1676,0.0199,88.1472
+hasElevator,0.157,0.0538,65.7436
+rooms,0.1304,0.0615,52.8212
+squareMeters,0.0685,0.0028,95.8487
+type_blockOfFlats,0.0046,0.006,-30.3927
