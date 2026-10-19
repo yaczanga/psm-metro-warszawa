@@ -43,24 +43,6 @@ ORDINAL_RAMP = ['#8fb4c7', '#6b9db5', '#3a7694', '#1a5572', '#06324a']
 CATEGORICAL = ['#009e73', '#e69f00', '#0072b2', '#56b4e9', '#f0e442', '#cc79a7']
 
 
-def categorical_map(keys, accent_key=None) -> dict:
-    """Stala mapa ``klucz -> barwa`` dla kategorii powyzej limitu dwoch.
-
-    Kolejnosc kluczy, nie wielkosc danych, rozstrzyga o barwie. ``accent_key``
-    dostaje ACCENT: kategoria bedaca przedmiotem badania.
-    """
-    keys = list(keys)
-    obce = [k for k in keys if k != accent_key]
-    if len(obce) > len(CATEGORICAL):
-        raise ValueError(
-            f'Paleta kategorialna ma {len(CATEGORICAL)} barw, zadano '
-            f'{len(obce)}. Zagreguj najslabsze kategorie do pozycji zbiorczej.')
-    mapa = {k: CATEGORICAL[i] for i, k in enumerate(obce)}
-    if accent_key is not None:
-        mapa[accent_key] = ACCENT
-    return mapa
-
-
 # --- Rampy ciagle ------------------------------------------------------
 # Sekwencyjna: wielkosc. Dywergencyjna: biegunowosc wokol zera.
 SEQUENTIAL_CMAP = LinearSegmentedColormap.from_list(
@@ -125,24 +107,6 @@ def apply_style() -> None:
         'lines.markersize': 6,
         'axes.prop_cycle': mpl.cycler(color=[BLUE, VERMILION]),
     })
-
-
-def series_colors(n: int) -> list[str]:
-    """Barwy dla n serii - lub blad, gdy n przekracza pojemnosc systemu.
-
-    Trzeciej serii nie tworzymy kolejnym odcieniem; alternatywy w komunikacie
-    bledu.
-    """
-    if n <= 0:
-        raise ValueError('Liczba serii musi byc dodatnia.')
-    if n == 1:
-        return [BLUE]
-    if n == 2:
-        return [BLUE, VERMILION]
-    raise ValueError(
-        f'System niesie tozsamosc dwiema barwami, zadano {n}. Uzyj '
-        f'ORDINAL_RAMP (kategorie uporzadkowane), wzorca ACCENT na tle MUTED '
-        f'(jedna seria wyrozniona) albo rozbij na osobne panele.')
 
 
 def decimal_comma(ax, axis: str = 'y', places: int = 2) -> None:
