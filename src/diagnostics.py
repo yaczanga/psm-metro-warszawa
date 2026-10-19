@@ -13,11 +13,9 @@ def vif_table(features: pd.DataFrame) -> pd.DataFrame:
     """Czynnik inflacji wariancji dla kazdej zmiennej kontrolnej, malejaco.
 
     Liczony na probie modelowej, czyli po odrzuceniu strefy buforowej - to ten
-    zbior wchodzi do estymacji propensity score. Policzenie VIF na probie
-    szerszej opisywaloby inne dane niz te, ktore model widzi.
-
-    Stala jest dodawana przed obliczeniem i usuwana z wyniku: bez wyrazu
-    wolnego VIF myli wspolliniowosc ze zwyklym odchyleniem od zera.
+    zbior wchodzi do estymacji propensity score. Stala jest dodawana przed
+    obliczeniem i usuwana z wyniku: bez wyrazu wolnego VIF myli
+    wspolliniowosc z odchyleniem od zera.
     """
     with_const = sm.add_constant(features.astype(float))
     table = pd.DataFrame(

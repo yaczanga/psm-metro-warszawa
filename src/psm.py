@@ -53,12 +53,9 @@ def match(scores: np.ndarray, model: pd.DataFrame, neighbours: int,
     """Dopasowuje do kazdego lokalu przy metrze najblizszych sasiadow.
 
     Dopasowanie odbywa sie ZE ZWRACANIEM: ten sam lokal kontrolny moze trafic
-    do wielu par, bo sasiedzi szukani sa niezaleznie dla kazdej obserwacji
-    z grupy eksperymentalnej.
-
-    Caliper odrzuca cala pare, gdy NAJDALSZY z przyjetych sasiadow wypada poza
-    limitem - inaczej do sredniej sobowtora weszlaby obserwacja niepodobna.
-    Limit wyrazony jest w odchyleniach standardowych samego propensity score.
+    do wielu par. Caliper odrzuca cala pare, gdy NAJDALSZY z przyjetych
+    sasiadow wypada poza limitem, wyrazonym w odchyleniach standardowych
+    samego propensity score.
     """
     frame = model.copy()
     frame["pscore"] = scores
@@ -105,14 +102,10 @@ def paired_differences(matched: dict, column: str) -> np.ndarray:
 def estimate(matched: dict) -> dict:
     """ATT w zlotych i procentach wraz z istotnoscia i przedzialem ufnosci.
 
-    ATT jest srednia z roznic parowych, nie roznica srednich - przy dopasowaniu
-    ze zwracaniem te dwie wielkosci nie sa sobie rowne, bo lokale kontrolne
-    wchodza do sredniej z roznymi wagami.
-
-    Istotnosc liczy test t-Studenta dla par, zgodny ze struktura danych:
-    kazda obserwacja z grupy eksperymentalnej ma przypisanego sobowtora.
-    Przedzial ufnosci pochodzi z tego samego bledu standardowego roznic
-    parowych, wiec oba wyniki opisuja ten sam estymator.
+    ATT jest srednia z roznic parowych, nie roznica srednich: przy dopasowaniu
+    ze zwracaniem te dwie wielkosci nie sa sobie rowne. Istotnosc liczy test
+    t-Studenta dla par, a przedzial ufnosci pochodzi z tego samego bledu
+    standardowego roznic parowych.
     """
     differences_log = paired_differences(matched, config.LOG_OUTCOME)
     differences_pln = paired_differences(matched, config.OUTCOME)

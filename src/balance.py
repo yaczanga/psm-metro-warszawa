@@ -31,13 +31,10 @@ def _pooled_denominator(treated_raw: pd.Series, control_raw: pd.Series) -> float
 def smd_table(model: pd.DataFrame, matched: dict, columns=None) -> pd.DataFrame:
     """SMD kazdej zmiennej kontrolnej przed i po dopasowaniu.
 
-    Dla kazdej zmiennej zwracany jest SMD przed dopasowaniem (srednie w calych
-    grupach pierwotnych) i po dopasowaniu (srednia w grupie eksperymentalnej po
-    nalozeniu calipera wobec sredniej jej sobowtorow). Mianownik jest w obu
-    przypadkach ten sam, wiec obie liczby sa porownywalne.
-
-    Zmienna o zerowej wariancji w obu grupach pierwotnych dostaje SMD rowny
-    zero: nie ma czego standaryzowac, a dzielenie daloby nieskonczonosc.
+    Licznik po dopasowaniu to srednia grupy eksperymentalnej po nalozeniu
+    calipera wobec sredniej jej sobowtorow, a mianownik pochodzi z grup
+    pierwotnych. Zmienna o zerowej wariancji w obu grupach dostaje SMD rowny
+    zero.
     """
     columns = (
         list(matched["treated"].columns.intersection(_control_columns(model)))

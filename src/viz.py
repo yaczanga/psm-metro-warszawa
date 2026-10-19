@@ -302,13 +302,9 @@ def plot_correlation(matrix: pd.DataFrame, save: bool = False):
     """Macierz korelacji zmiennych kontrolnych.
 
     Korelacja jest wielkoscia biegunowa wokol zera, wiec nosi rampe
-    dywergencyjna: blekit dla wartosci ujemnych, cynober dla dodatnich, szary
-    w zerze. Przekatna i gorny trojkat sa zamaskowane - nie niosa informacji,
-    a bez maski najmocniejsza barwa systemu trafialaby na komorki bez tresci.
-
-    Po zamaskowaniu pierwszy wiersz i ostatnia kolumna sa puste, wiec wypadaja
-    z rysunku. Komorki dostaja obramowanie, bo przy korelacjach bliskich zeru
-    wypelnienie jest prawie biale i bez obramowania znika na tle.
+    dywergencyjna. Przekatna i gorny trojkat sa zamaskowane, pusty pierwszy
+    wiersz i ostatnia kolumna wypadaja z rysunku, a komorki dostaja
+    obramowanie, bo wypelnienie bliskie zeru znika na tle.
     """
     trimmed = matrix.iloc[1:, :-1]
     mask = style.upper_triangle_mask(matrix)[1:, :-1]
