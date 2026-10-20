@@ -1,5 +1,7 @@
 # Wpływ bliskości metra na ceny mieszkań w Warszawie
 
+[![testy](https://github.com/yaczanga/psm-metro-warszawa/actions/workflows/testy.yml/badge.svg)](https://github.com/yaczanga/psm-metro-warszawa/actions/workflows/testy.yml)
+
 Mieszkania bliżej niż 0,5 km od stacji metra są droższe o 2366 zł/m2 od mieszkań oddalonych o ponad 1,2 km, ale po zestawieniu lokali o niemal identycznych cechach fizycznych premia za samo metro wynosi 735 zł/m2, czyli 4,52% ceny. Premia wyjaśnia 31,0% surowej różnicy; reszta wynika z innych cech skorelowanych z położeniem stacji. Główne ograniczenie wyniku jest w danych: usunięcie listowe braków zabiera 58,8% warszawskich ofert, a odpowiada za nie przede wszystkim `buildingMaterial`, czyli zmienna, na której stoi wniosek o zróżnicowaniu efektu.
 
 ## Pytanie badawcze
